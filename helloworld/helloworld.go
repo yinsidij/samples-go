@@ -35,6 +35,11 @@ func Workflow(ctx workflow.Context, name string) (string, error) {
 
 func Activity(ctx context.Context, name string) (string, error) {
 	logger := activity.GetLogger(ctx)
+        for i := 0; i < 5; i++ {
+            time.Sleep(1 * time.Second) 
+           logger.Info("Activity", "wait ...", i)
+        }
+
 	logger.Info("Activity", "name", name)
 	return "Hello " + name + "!", nil
 }
